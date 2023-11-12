@@ -1,0 +1,46 @@
+// assets/variables.scss
+
+// Variables you want to modify
+// $btn-border-radius: 0px;
+
+// If you need to extend Vuetify SASS lists
+$material-light: ( cards: blue );
+
+@import 'vuetify/lib/styles/main.sass';
+
+$body-font-family: 'Nunito', 'Prompt', sans-serif !important;
+$font-size-root: 14px;
+$input-font-size: 12px;
+
+$sizes: (
+    'display-1': 44px,
+    'display-2': 40px,
+    'display-3': 30px,
+    'h1': 36px,
+    'h2': 30px,
+    'h3': 21px,
+    'h4': 18px,
+    'h5': 16px,
+    'h6': 14px,
+    'text-8': 8px,
+    'text-10': 10px,
+    'text-13': 13px,
+    'text-15': 15px,
+    'text-18': 18px,
+    'text-20': 20px,
+    'text-24': 24px,
+    'body-text-1': 10px
+);
+
+@each $pixel, $size in $sizes {
+    .#{$pixel} {
+        font-size: $size;
+        line-height: $size + 10;
+    }
+}
+
+// body {
+//   font-family: $body-font-family;
+// }
+
+$box-shadow: rgb(145 158 171 / 20%) 0px 0px 2px 0px, rgb(145 158 171 / 12%) 0px 12px 24px -4px;
