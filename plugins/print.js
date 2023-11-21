@@ -7,14 +7,15 @@ export default defineNuxtPlugin((app) => {
       specs: [
         'fullscreen=yes',
         'titlebar=yes',
-        'scrollbars=yes'
+        'scrollbars=no'
       ],
       styles: [
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
-        'https://unpkg.com/kidlat-css/css/kidlat.css'
+        'https://unpkg.com/kidlat-css/css/kidlat.css',
+        'public/landscape.css'
       ],
-      timeout: 1000, // default timeout before the print window appears
-      autoClose: true, // if false, the window will not close after printing
+      timeout: 3000, // default timeout before the print window appears
+      autoClose: false, // if false, the window will not close after printing
       windowTitle: window.document.title, // override the window title
     }
     
