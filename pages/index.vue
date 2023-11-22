@@ -35,8 +35,8 @@
   <v-dialog
     v-model="dialog"
     persistent
+    fullscreen
     scrollable
-    max-width="800"
   >
     <v-card>
       <!-- <v-card-title class="text-center">
@@ -44,71 +44,98 @@
       </v-card-title> -->
       <v-card-text>
         <div id="printMe">
-          <div class="mt-5 text-center">
-            <v-img
-              width="150"
-              :src="logoUrl"
-              class="ml-auto mr-auto"
-            />
+          <div class="print-format">
+            <div class="mt-5 text-center">
+              <img
+                width="150"
+                :src="logoUrl"
+                class="ml-auto mr-auto"
+                style="width: 150px !important;"
+              />
+              <br>
+              <!-- <img
+                :src="'data:image/jpeg;base64,'+ cardData.image"
+                class="ml-auto mr-auto"
+                style="width: 100px !important;"
+              /> -->
+            </div>
+            <div class="mt-5 mb-5 text-center">
+              <h2>
+                ใบสรุปยืนยันการเข้ารับบริการผู้ป่วยนอก
+              </h2>
+            </div>
+            <v-table
+              :table-line-height="0"
+              style="width: 100% !important;"
+            >
+              <tbody>
+                <tr style="border-bottom: 0px !important;">
+                  <td style="width: 20%; border-bottom: 0px !important; font-weight: bold;">ชื่อ - นามสกุล</td>
+                  <td style="width: 30%; border-bottom: 0px !important;">{{ cardData.fname }} {{ cardData.lname }}</td>
+                  <td style="width: 20%; border-bottom: 0px !important; font-weight: bold;">เลขบัตรประชาชน</td>
+                  <td style="width: 30%; border-bottom: 0px !important;">{{ cardData.pid }}</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">วันเดือนปีเกิด</td>
+                  <td style="border-bottom: 0px !important;">{{ convertThaiDate(cardData.birthDate) }}</td>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">อายุ</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.age }}</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">วันที่รับบริการ</td>
+                  <td style="border-bottom: 0px !important;">{{ convertThaiDateNow() }}</td>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยให้บริการ</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการประจำ</td>
+                  <td style="border-bottom: 0px !important;"></td>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการปฐมภูมิ</td>
+                  <td style="border-bottom: 0px !important;"></td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการรับส่งต่อ</td>
+                  <td style="border-bottom: 0px !important;"></td>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิหลัก</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.mainInscl }}</td>
+                </tr>
+                <tr>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิย่อย</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.subInscl }}</td>
+                  <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
+                  <td style="border-bottom: 0px !important;"></td>
+                </tr>
+              </tbody>
+            </v-table>
           </div>
-          <div class="mt-5 text-center">
-            <h3>
-              ใบสรุปยืนยันการเข้ารับบริการผู้ป่วยนอก
-            </h3>
-          </div>
-          <v-table
-            :table-line-height="0"
-            style="width: 100% !important;"
-          >
-            <tbody>
-              <tr style="border-bottom: 0px !important;">
-                <td style="border-bottom: 0px !important;">ชื่อ - นามสกุล</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.fname }} {{ cardData.lname }}</td>
-                <td style="border-bottom: 0px !important;">เลขบัตรประชาชน</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.pid }}</td>
-              </tr>
-              <tr>
-                <td style="border-bottom: 0px !important;">วันที่รับบริการ</td>
-                <td style="border-bottom: 0px !important;"></td>
-                <td style="border-bottom: 0px !important;">หน่วยให้บริการ</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
-              </tr>
-              <tr>
-                <td style="border-bottom: 0px !important;">หน่วยบริการประจำ</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
-                <td style="border-bottom: 0px !important;">หน่วยบริการปฐมภูมิ</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
-              </tr>
-              <tr>
-                <td style="border-bottom: 0px !important;">หน่วยบริการรับส่งต่อ</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
-                <td style="border-bottom: 0px !important;">สิทธิหลัก</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.mainInscl }}</td>
-              </tr>
-              <tr>
-                <td style="border-bottom: 0px !important;">สิทธิย่อย</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.subInscl }}</td>
-                <td style="border-bottom: 0px !important;">จังหวัดที่ลงทะเบียนสิทธิ</td>
-                <td style="border-bottom: 0px !important;">{{ cardData.pid }}</td>
-              </tr>
-            </tbody>
-          </v-table>
         </div>
       </v-card-text>
       <v-divider />
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn
-          color="green-darken-1"
-          variant="text"
+          variant="tonal"
+          color="gray-darken-1"
+          class="pl-5 pr-5"
           @click="dialog = false"
         >
           ปิด
         </v-btn>
+        <!-- <v-btn
+          color="green-darken-1"
+          variant="tonal"
+          prepend-icon="mdi-printer-outline"
+          class="pl-5 pr-5"
+          @click="print"
+        >
+          พิมพ์เอกสาร
+        </v-btn> -->
         <v-btn
           color="green-darken-1"
-          variant="text"
-          @click="print"
+          variant="tonal"
+          prepend-icon="mdi-printer-outline"
+          class="pl-5 pr-5"
+          @click="printMe"
         >
           พิมพ์เอกสาร
         </v-btn>
@@ -119,15 +146,20 @@
 
 <script>
 import axios from 'axios'
+import { usePaperizer } from 'paperizer'
 import logoNhso from '@/assets/images/nhso.png'
 export default {
   data() {
     return {
+      output: null,
       logoUrl: logoNhso,
       dialog: false,
       loading: false,
       cardData: {}
     }
+  },
+  mounted () {
+    // this.convertThaiDate(25260509)
   },
   methods: {
     async _signOut () {
@@ -146,7 +178,7 @@ export default {
       this.loading = true
       try {
         const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=true`)
-        console.log(response)
+        // console.log(response)
         this.cardData = response.data
         this.dialog = true
       // this.cardData = 
@@ -155,12 +187,50 @@ export default {
       }
       this.loading = false
     },
-    async print () {
-      // Pass the element id here
-      await this.$htmlToPaper('printMe');
+    print () {
+      // await this.$htmlToPaper('printMe');
+      const { paperize } = usePaperizer('printMe', {
+        styles: [
+          'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
+          '~/assets/css/print.css'
+        ]
+      }, this.closeDialog())
+      paperize()
+    },
+    closeDialog () {
+      this.dialog = false
     },
     printMe () {
       window.print()
+    },
+    convertThaiDate (birthDate) {
+      // console.log(birthDate)
+      const str = birthDate.toString()
+      const yyyy = str.slice(0, 4)
+      const mm = str.slice(4, 6)
+      const dd = str.slice(6, 8)
+      // console.log(dd)
+      const date = new Date(yyyy-543, mm-1, dd)
+      const result = date.toLocaleDateString('th-TH', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        // weekday: 'long',
+      })
+      // console.log(result)
+      return result
+    },
+    convertThaiDateNow () {
+      // console.log(dd)
+      const date = new Date()
+      const result = date.toLocaleDateString('th-TH', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        // weekday: 'long',
+      })
+      // console.log(result)
+      return result
     }
   }
 }
@@ -174,9 +244,25 @@ export default {
   height: 100dvh;
 }
 
+.print-format {
+  padding: 10px 5px 10px 5px;
+}
+
 @media print {
   @page {
-    size: landscape
+    font-size: 6px;
+    size: A5 landscape;
+    /* size: A5; */
+    margin: 0mm;
+    padding: 0mm;
   }
+  .v-card-actions, .v-divider {
+    display: none;
+  }
+  /* .print-format .copy {
+    display: none;
+  } */
 }
+
+
 </style>

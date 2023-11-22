@@ -12,11 +12,11 @@ export default defineNuxtPlugin((app) => {
       styles: [
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
         'https://unpkg.com/kidlat-css/css/kidlat.css',
-        'public/landscape.css'
+        '~/assets/css/landscape.css'
       ],
-      timeout: 3000, // default timeout before the print window appears
-      autoClose: false, // if false, the window will not close after printing
-      windowTitle: window.document.title, // override the window title
+      timeout: 3000,
+      autoClose: false,
+      windowTitle: window.document.title,
     }
     
     app.vueApp.use(VueHtmlToPaper, options);

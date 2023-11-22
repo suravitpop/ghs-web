@@ -4546,6 +4546,13 @@ pako@^0.2.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
   integrity sha512-NUcwaKxUxWrZLpDG+z/xZaCgQITkA/Dv4V/T6bw7VON6l1Xz/VnrBqrYjZQ12TamKHzITTfOEIYUj48y2KXImA==
 
+paperizer@^0.1.6:
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/paperizer/-/paperizer-0.1.6.tgz#7a9acaf23885ce35096e25397be574ffdd758b2c"
+  integrity sha512-GhRml0rbch0kUpfpijIG2sE1DqPeGXp1bTXLKFrDz9faI0SPIa4Zjn8FrYNxV34SyDGSrstniM/qfJC0mR8mGQ==
+  dependencies:
+    vue "^3.3.4"
+
 parse-git-config@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/parse-git-config/-/parse-git-config-3.0.0.tgz#4a2de08c7b74a2555efa5ae94d40cd44302a6132"
@@ -6114,7 +6121,7 @@ vue-router@^4.2.5:
   dependencies:
     "@vue/devtools-api" "^6.5.0"
 
-vue@^3.3.8:
+vue@^3.3.4, vue@^3.3.8:
   version "3.3.8"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.3.8.tgz#532ff071af24f6a69e5ecc53a66858a9ee874ffc"
   integrity sha512-5VSX/3DabBikOXMsxzlW8JyfeLKlG9mzqnWgLQLty88vdZL7ZJgrdgBOmrArwxiLtmS+lNNpPcBYqrhE6TQW5w==
