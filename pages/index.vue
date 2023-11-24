@@ -85,23 +85,23 @@
                   <td style="border-bottom: 0px !important; font-weight: bold;">วันที่รับบริการ</td>
                   <td style="border-bottom: 0px !important;">{{ convertThaiDateNow() }}</td>
                   <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยให้บริการ</td>
-                  <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode }} - {{ cardData.hospMain.hname }}</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode !== '' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '' }}</td>
                 </tr>
                 <tr>
                   <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการประจำ</td>
-                  <td style="border-bottom: 0px !important;"></td>
+                  <td style="border-bottom: 0px !important;">{{ typeof cardData.hospMainOp !== 'undefined' ? `${cardData.hospMainOp.hcode} - ${ cardData.hospMainOp.hname }` : '-' }}</td>
                   <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการปฐมภูมิ</td>
-                  <td style="border-bottom: 0px !important;"></td>
+                  <td style="border-bottom: 0px !important;">{{ typeof cardData.hospSub !== 'undefined' ? `${cardData.hospSub.hcode} - ${ cardData.hospSub.hname }` : '-' }}</td>
                 </tr>
                 <tr>
                   <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการรับส่งต่อ</td>
-                  <td style="border-bottom: 0px !important;"></td>
+                  <td style="border-bottom: 0px !important;">{{ typeof cardData.hospMain !== 'undefined' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '-' }}</td>
                   <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิหลัก</td>
                   <td style="border-bottom: 0px !important;">{{ cardData.mainInscl }}</td>
                 </tr>
                 <tr>
                   <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิย่อย</td>
-                  <td style="border-bottom: 0px !important;">{{ cardData.subInscl }}</td>
+                  <td style="border-bottom: 0px !important;">{{ cardData.subInscl !== '' ? cardData.subInscl : '' }}</td>
                   <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
                   <td style="border-bottom: 0px !important;"></td>
                 </tr>
