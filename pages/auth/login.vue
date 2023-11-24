@@ -59,8 +59,8 @@ export default {
   data() {
     return {
       formData: {
-        email: "admin@youremail.com",
-        password: "Admin@123",
+        email: "",
+        password: "",
       },
       usernameRules: [
         (v) => !!v || "Username/Email is required",
