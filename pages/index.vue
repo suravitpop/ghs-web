@@ -120,7 +120,8 @@
                     :rules="phoneRules"
                     label="เบอร์โทรศัพท์"
                     type="number"
-                    required />
+                    
+                     />
                   </v-col>
                   <v-col>
                     <v-select
@@ -368,6 +369,9 @@ export default {
         this.formData.correlationId = response.data.correlationId
         this.formData.hcode = response.data.hospMain.hcode
         this.dialog = true
+        // try make default
+       this.formData.claimType = response.data.claimTypes[0].claimType
+        this.formData.mobile = "0000000000"
       // this.cardData = 
       } catch (error) {
 
