@@ -86,9 +86,9 @@
                   </tr>
                   <tr>
                     <td style="border-bottom: 0px !important; font-weight: bold;">วันที่และเวลารับบริการ</td>
-                    <td style="border-bottom: 0px !important;">{{ convertThaiDateNow() }} (ssssss)</td>
+                    <td style="border-bottom: 0px !important;">{{ convertThaiDateNow() }}</td>
                     <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยให้บริการ</td>
-                    <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode !== '' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '' }}</td>
+                    <td style="border-bottom: 0px !important;">{{ typeof cardData.hospMain !== 'undefined' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '-' }}</td>
                   </tr>
                   <tr>
                     <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการประจำ</td>
@@ -105,8 +105,8 @@
                   <tr>
                     <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิย่อย</td>
                     <td style="border-bottom: 0px !important;">{{ cardData.subInscl !== '' ? cardData.subInscl : '' }}</td>
-                    <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
-                    <td style="border-bottom: 0px !important;">&nbsp;</td>
+                    <!-- <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
+                    <td style="border-bottom: 0px !important;">&nbsp;</td> -->
                   </tr>
                 </tbody>
               </v-table>
@@ -192,7 +192,7 @@
                     <td style="border-bottom: 0px !important; font-weight: bold;">วันที่และเวลารับบริการ</td>
                     <td style="border-bottom: 0px !important;">{{ convertThaiDateTime(saveClaimData.createdDate) }}</td>
                     <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยให้บริการ</td>
-                    <td style="border-bottom: 0px !important;">{{ cardData.hospMain.hcode !== '' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '' }}</td>
+                    <td style="border-bottom: 0px !important;">{{ typeof cardData.hospMain !== 'undefined' ? `${cardData.hospMain.hcode} - ${ cardData.hospMain.hname }` : '-' }}</td>
                   </tr>
                   <tr>
                     <td style="border-bottom: 0px !important; font-weight: bold;">หน่วยบริการประจำ</td>
@@ -209,8 +209,8 @@
                   <tr>
                     <td style="border-bottom: 0px !important; font-weight: bold;">สิทธิย่อย</td>
                     <td style="border-bottom: 0px !important;">{{ cardData.subInscl !== '' ? cardData.subInscl : '' }}</td>
-                    <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
-                    <td style="border-bottom: 0px !important;">&nbsp;</td>
+                    <!-- <td style="border-bottom: 0px !important; font-weight: bold;">จังหวัดที่ลงทะเบียนสิทธิ</td>
+                    <td style="border-bottom: 0px !important;">&nbsp;</td> -->
                   </tr>
                 </tbody>
               </v-table>
@@ -362,12 +362,13 @@ export default {
       const config = useRuntimeConfig()
       this.loading = true
       try {
-        const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=true`)
+        const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=false`)
         // console.log(response)
         this.cardData = response.data
         this.formData.pid = response.data.pid
         this.formData.correlationId = response.data.correlationId
-        this.formData.hcode = response.data.hospMain.hcode
+        // this.formData.hcode = response.data.hospMain.hcode
+        this.formData.hcode = "11722"
         this.dialog = true
         // try make default
        this.formData.claimType = response.data.claimTypes[0].claimType
