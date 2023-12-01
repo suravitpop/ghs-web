@@ -78,21 +78,22 @@ export default defineNuxtConfig({
       },
     },
   },
-  // routeRules: {
-  //   '/api_local/**': { proxy: { to: `${process.env.API_LOCAL_URL}/**` } }
-  // },
-  nitro: {
-    devProxy: {
-      '/api_local': {
-        target: process.env.API_LOCAL_URL,
-        pathRewrite: {'^/api_local/': ''},
-        changeOrigin: true
-      },
-      '/api/': {
-        target: process.env.API_BASE_URL,
-        pathRewrite: {'^/api/': ''},
-        changeOrigin: true
-      }
-    }
-  }
+  routeRules: {
+    '/api/**': { proxy: { to: `${process.env.API_BASE_URL}/**` } },
+    '/api_local/**': { proxy: { to: `${process.env.API_LOCAL_URL}/**` } }
+  },
+  // nitro: {
+  //   devProxy: {
+  //     '/api_local': {
+  //       target: process.env.API_LOCAL_URL,
+  //       pathRewrite: {'^/api_local/': ''},
+  //       changeOrigin: true
+  //     },
+  //     '/api/': {
+  //       target: process.env.API_BASE_URL,
+  //       pathRewrite: {'^/api/': ''},
+  //       changeOrigin: true
+  //     }
+  //   }
+  // }
 })
