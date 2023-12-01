@@ -362,8 +362,8 @@ export default {
       const config = useRuntimeConfig()
       this.loading = true
       try {
-        const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=false`)
-        // const response = await axios.get(`${config.public.API_LOCAL_URL}/api/smartcard/read?readImageFlag=false`)
+        // const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=false`)
+        const response = await axios.get(`${config.public.API_LOCAL_URL}/api/smartcard/read?readImageFlag=false`)
         // console.log(response)
         this.cardData = response.data
         this.formData.pid = response.data.pid
@@ -421,8 +421,8 @@ export default {
       const config = useRuntimeConfig()
       const payload = this.formData
       try {
-        const response = await axios.post(`/api_local/api/nhso-service/confirm-save`, payload)
-        // const response = await axios.post(`${config.public.API_LOCAL_URL}/api/nhso-service/confirm-save`, payload)
+        // const response = await axios.post(`/api_local/api/nhso-service/confirm-save`, payload)
+        const response = await axios.post(`${config.public.API_LOCAL_URL}/api/nhso-service/confirm-save`, payload)
         // console.log(response)
         this.saveClaimData = response.data
         this.flagSave = true
