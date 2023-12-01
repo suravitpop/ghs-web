@@ -43,8 +43,18 @@ export default defineNuxtConfig({
         inject: true
       }
     }],
-    '@sidebase/nuxt-auth'
+    '@sidebase/nuxt-auth',
+    'nuxt-security'
+    // 'nuxt-helm'
   ],
+  security: {
+    headers: {
+      crossOriginResourcePolicy: 'cross-origin',
+      // referrerPolicy: 'same-origin',
+      contentSecurityPolicy: false,
+      xFrameOptions: false,
+    },
+  },
   auth: {
     globalAppMiddleware: true,
     baseURL: process.env.BASE_URL,
