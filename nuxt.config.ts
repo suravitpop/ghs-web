@@ -80,7 +80,7 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/**': { proxy: { to: `${process.env.API_BASE_URL}/**` } },
-    // '/api_local/**': { proxy: { to: `${process.env.API_LOCAL_URL}/**` } }
+    '/api_local/**': { proxy: { to: `${process.env.API_LOCAL_URL}/**` } }
   },
   // nitro: {
   //   devProxy: {
