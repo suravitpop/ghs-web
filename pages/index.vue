@@ -421,8 +421,9 @@ export default {
       const config = useRuntimeConfig()
       const payload = this.formData
       try {
-        const response = await axios.post(`/api_local/api/nhso-service/confirm-save`, payload)
-        // const response = await axios.post(`${config.public.API_LOCAL_URL}/api/nhso-service/confirm-save`, payload)
+        // const response = await axios.post(`/api_local/api/nhso-service/confirm-save`, payload)
+        const response = await axios.post(`${config.public.API_LOCAL_URL}/api/nhso-service/confirm-save`, payload)
+        
         // console.log(response)
         this.saveClaimData = response.data
         this.flagSave = true
