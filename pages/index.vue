@@ -362,8 +362,8 @@ export default {
       const config = useRuntimeConfig()
       this.loading = true
       try {
-        const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=false`)
-        // const response = await axios.get(`${config.public.API_LOCAL_URL}/api/smartcard/read?readImageFlag=false`)
+        // const response = await axios.get(`/api_local/api/smartcard/read?readImageFlag=false`)
+        const response = await axios.get(`${config.public.API_LOCAL_URL}/api/smartcard/read?readImageFlag=false`)
         // console.log(response)
         this.cardData = response.data
         this.formData.pid = response.data.pid
