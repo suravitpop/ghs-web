@@ -507,9 +507,9 @@ export default {
 @media print {
   @page {
     font-size: 3px;
-    size: A5;
+    size: A5 lanscape;
     /* size: A5; */
-    margin: 0mm;
+    margin: 0mm 10mm;
     padding: 0mm;
   }
   .v-card-actions, .v-divider {
