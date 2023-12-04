@@ -507,7 +507,7 @@ export default {
 @media print {
   @page {
     font-size: 3px;
-    size: A5 landscape;
+    size: A5;
     /* size: A5; */
     margin: 0mm;
     padding: 0mm;
