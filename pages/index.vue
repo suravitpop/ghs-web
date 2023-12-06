@@ -385,7 +385,8 @@ export default {
         hn: '',
         hcode: '',
       },
-      window.location.reload();
+      location.reload(true);
+      
     },
     printMe () {
       window.print()
