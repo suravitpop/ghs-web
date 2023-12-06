@@ -383,8 +383,9 @@ export default {
         claimType: '',
         correlationId: '',
         hn: '',
-        hcode: ''
-      }
+        hcode: '',
+      },
+      location.reload();
     },
     printMe () {
       window.print()
