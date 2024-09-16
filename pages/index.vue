@@ -2,7 +2,7 @@
   <v-row align="center" justify="center" fill-height class="full-height">
     <v-col cols="12" sm="6" md="6" lg="4" xl="4" xxl="4">
       <v-card class="pa-5 text-center">
-        <v-img height="75" src="@/assets/images/logo.jpeg"></v-img>
+        <v-img height="75" src="@/assets/images/host-health-logo.png"></v-img>
         <v-card-title>กรุณาเสียบบัตรประจำตัวประชาชน</v-card-title>
         <v-icon
           v-if="!loading"
