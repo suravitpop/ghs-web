@@ -3,7 +3,7 @@
     <v-col cols="12" sm="6" md="4" lg="3" xl="3" xxl="2">
       <v-card class="mx-auto pa-5 card-main">
         <div class="mb-5">
-          <v-img height="75" src="@/assets/images/host-health-logo.png> </v-img>
+          <v-img height="75" src="@/assets/images/host-health-logo.png"> </v-img>
         </div>
         <v-form ref="form">
           <v-text-field v-model="formData.email" variant="outlined" density="compact" :rules="usernameRules"
