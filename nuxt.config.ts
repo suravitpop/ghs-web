@@ -57,7 +57,7 @@ export default defineNuxtConfig({
   },
   auth: {
     globalAppMiddleware: true,
-    baseURL: process.env.API_BASE_URL,
+    baseURL: process.env.BASE_URL,
     provider: {
       type: 'local',
       endpoints: {
@@ -89,7 +89,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    // '/api/**': { proxy: { to: `${process.env.API_BASE_URL}/**` } },
+    '/api/**': { proxy: { to: `${process.env.API_BASE_URL}/**` } },
     '/api_local/**': { proxy: { to: `${process.env.API_LOCAL_URL}/**` } }
   },
   // nitro: {
